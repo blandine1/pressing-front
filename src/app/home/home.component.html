@@ -1,0 +1,34 @@
+<div class="page-container">
+  <div class="sidebar">
+    <div class="list-items">
+       <a routerLink="/services" routerLinkActive="selected" class="list-item">
+         <img src="assets/images/prestations-de-service.png" class="iconuser service" alt="">
+        les services
+       </a>
+       <a routerLink="/utilisateur" routerLinkActive="selected" class="list-item">
+         <img src="assets/images/reglages.png" class="iconuser service" alt="">
+         les admins
+       </a>
+      <a routerLink="/client" routerLinkActive="selected" class="list-item">
+        <img src="assets/images/homme.png" class="iconuser service" alt="">
+        les clients
+      </a>
+      <a routerLink="/produit" routerLinkActive="selected" class="list-item">
+        <img src="assets/images/processus.png" class="iconuser service" alt="">
+        liste des produits
+      </a>
+      <a routerLink="/livre" routerLinkActive="selected" class="list-item">
+        <img src="assets/images/puzzle.png" class="iconuser service" alt="">
+        liste des produits livrés
+      </a>
+<!--      <a routerLink="/categorie" routerLinkActive="selected" class="list-item">-->
+<!--        <i><fa-icon class="iconuser" [icon]  = "userIcon3"></fa-icon></i>-->
+<!--        liste des categories-->
+<!--      </a>-->
+    </div>
+  </div>
+
+  <div class="page-content-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

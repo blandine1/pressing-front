@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  list-style: unset;
+  text-decoration: none;
+}
+
+.addbtn{
+  margin: 2px;
+}
+
+.btn{
+  border-radius: unset;
+}
+
+.form-control{
+  border-radius: unset;
+}
+
+.fa{
+  flex-wrap: unset;
+  height: 30px;
+  width: 30px;
+  padding: 5px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.check{
+  border-radius: unset;
+}
+
+input {
+  text-align: center;
+}
+

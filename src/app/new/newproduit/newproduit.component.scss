@@ -1,0 +1,44 @@
+.produitnew{
+  display: flex;
+  grid-gap: 30px;
+  margin-left: 20px;
+}
+
+.produitLigne{
+  margin-top: 30px;
+}
+
+.delete{
+  cursor: pointer;
+}
+
+.total{
+  margin-left: 5px;
+  padding: 0.2rem 0rem;
+}
+
+.client{
+  padding: 0.2rem 4rem;
+}
+
+.clienteDropdown {
+  display: flex;
+  align-items: center;
+  padding: 0.3rem;
+}
+
+.prixline{
+  margin-left: 50px;
+}
+.label{
+  margin-top: 6px;
+}
+
+.cpc{
+  margin-left: 50px;
+  color: blue;
+}
+
+
+
+

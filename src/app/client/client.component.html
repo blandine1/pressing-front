@@ -1,0 +1,30 @@
+<section class="table_header">
+  <h2>Liste des clients</h2>
+</section>
+<div *ngIf="clients" class="content">
+  <div class="addbtn">
+    <button class="btn btn-primary" routerLink="/newclient">new</button>
+  </div>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>id</th><th>first name</th><th>last name</th><th>phone number</th><th>creation</th><th>modification</th><th>action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let c of clients">
+      <td>{{c.id}}</td>
+      <td>{{c.firstName}}</td>
+      <td>{{c.lastName}}</td>
+      <td>{{c.phoneNumber}}</td>
+      <td>{{c.creationDate | date: "dd/MM/yy"}}</td>
+      <td>{{c.lastUpdatedDate | date: "dd/MM/yy"}}</td>
+      <th>
+        <i class="fa fa-pencil-square-o btn-primary" (click)="onEdit(c)" aria-hidden="true"></i>
+<!--        |-->
+<!--        <i class="fa fa-trash btn-danger" (click)="onDeleteClient(c)" aria-hidden="true"></i>-->
+      </th>
+    </tr>
+    </tbody>
+  </table>
+</div>

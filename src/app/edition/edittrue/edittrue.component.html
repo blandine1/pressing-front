@@ -1,0 +1,156 @@
+<div class="text-center">
+  <h5>Editer le produit</h5>
+</div>
+
+<div class="produitnew">
+  <div class="produitform" *ngIf="ligneProduit.id==null">
+
+    <div class="form-group">
+      <input type="hidden" readonly class="form-control" [(ngModel)]="produit.id">
+    </div>
+
+    <div class="form-group">
+      <label >Vêtement:</label>
+      <input type="text" class="form-control" [(ngModel)]="ligneProduit.vetement"  placeholder="le vetement a nettoyer" required>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Service:</label>
+      <select class="form-control" [(ngModel)]="ligneProduit.service"  required>
+        <option value="">--select service--</option>
+        <option *ngFor="let s of services" [ngValue]="s">
+          {{s.name}}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Prix</label>
+      <input type="number" class="form-control" [(ngModel)]="ligneProduit.prix"  placeholder="le prix unitaire" required>
+    </div>
+
+    <div class="form-group">
+      <label>Quantite</label>
+      <input type="number" class="form-control" (change)="calculPrixTotalPartielle()" [(ngModel)]="ligneProduit.quantite" placeholder="quantite" required>
+    </div>
+
+    <div class="form-group">
+      <label>Prix total partiel</label>
+      <input type="number" class="form-control" [(ngModel)]="ligneProduit.prixTotalPartiel" readonly placeholder="prix total partiel" required>
+    </div>
+
+    <div class="form-group">
+      <label>Description:</label>
+      <input type="text" class="form-control" [(ngModel)]="ligneProduit.description" placeholder="Entrer la description si possible" size="30" required>
+    </div>
+
+   <!-- <button type="submit" (click)="addproduit()" class="btn btn-primary">ADD</button>-->
+    <button type="submit" class="btn btn-primary">ADD</button>
+
+  </div>
+  <!--  /////////////////////////////////// start-->
+
+  <div class="produitformupdate" *ngIf="ligneProduit.id">
+
+    <div class="form-group">
+      <input type="hidden" readonly class="form-control" [(ngModel)]="ligneProduit.id">
+    </div>
+
+    <div class="form-group">
+      <label >Vêtement:</label>
+      <input type="text" class="form-control" [(ngModel)]="ligneProduit.vetement"  placeholder="le vetement a nettoyer" required>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Service:</label>
+      <select class="form-control" [(ngModel)]="ligneProduit.service"  required>
+        <option value="">--select service--</option>
+        <option *ngFor="let s of services" [ngValue]="s">
+          {{s.name}}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Prix</label>
+      <input type="number" class="form-control" [(ngModel)]="ligneProduit.prix"  placeholder="le prix unitaire" required>
+    </div>
+
+    <div class="form-group">
+      <label>Quantite</label>
+      <input type="number" class="form-control" (change)="calculPrixTotalPartielle()" [(ngModel)]="ligneProduit.quantite" placeholder="quantite" required>
+    </div>
+
+    <div class="form-group">
+      <label>Prix total partiel</label>
+      <input type="number" class="form-control" [(ngModel)]="ligneProduit.prixTotalPartiel" readonly placeholder="prix total partiel" required>
+    </div>
+
+    <div class="form-group">
+      <label>Description:</label>
+      <input type="text" class="form-control" [(ngModel)]="ligneProduit.description" placeholder="Entrer la description si possible" size="30" required>
+    </div>
+
+    <button type="submit" (click)="update()" class="btn btn-primary">UPDATE</button>
+
+  </div>
+
+  <!--  ///////////////////////////////////// End-->
+
+  <div class="produitLigne">
+
+    <div class="clienteDropdown">
+      <div class="label">
+        <label>Client :</label>
+      </div>
+      <div>
+        <select class="form-control client"  [(ngModel)]="produit.client" required>
+          <option *ngFor="let c of clients" [ngValue]="c">
+            {{c.firstName}}
+          </option>
+        </select>
+      </div>
+      <div class=" prixline">
+        <label>Prix total: </label>
+        <input type="number"  [(ngModel)]="produit.prixTotal"  readonly class="total">
+      </div>
+      <div class=" check cpc" *ngIf="produit.status==true">
+        <label>Paie comptant: </label>
+        <input type="checkbox"  [(ngModel)]="produit.status" disabled class="total">
+      </div>
+
+    </div>
+
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th>id</th><th>vetement</th><th>service</th><th>quantite</th><th>prix unitaire</th><th>prix total partiel</th><th>description</th><th>status</th><th>mise a jour</th><th>action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let l of listLigneProduit; index as index">
+        <td>{{l.id}}</td>
+        <td>{{l.vetement}}</td>
+        <td>{{l.service.name}}</td>
+        <td>{{l.quantite}}</td>
+        <td>{{l.prix}}</td>
+        <td>{{l.prixTotalPartiel}}</td>
+        <td>{{l.description}}</td>
+        <td>
+          <input type="checkbox"
+                 [value]="l.id"
+                 [checked]="l.status"
+                 (change)="onChangeProduit($event)"
+                 class="form-check-input check">
+        </td>
+        <td>{{l.lastUpdatedDate | date: "dd/MM/yy"}}</td>
+        <!--        <th  class="fa fa-trash btn-danger" (click)="remove(index)" aria-hidden="true"></th>-->
+        <!--<th  class="fa fa-pencil-square-o btn-primary" (click)="edit(l)" aria-hidden="true"></th>-->
+        <th  class="fa fa-pencil-square-o btn-primary"  aria-hidden="true"></th>
+      </tr>
+    </table>
+   <!-- <button class="btn btn-primary" readonly (click)="updateProduit()">save</button>-->
+    <button class="btn btn-primary" readonly >save</button>
+  </div>
+</div>
+

@@ -1,0 +1,34 @@
+<div class="content">
+  <p class="title">modification du client (ID:{{clientId}})</p>
+  <div *ngIf="clientFormGroup">
+  <form [formGroup]="clientFormGroup">
+    <div class="form-group">
+      <input type="number" readonly class="form-control" formControlName="id" size="50">
+    </div>
+    <div class="form-group">
+      <label >nom:</label>
+      <input type="text" class="form-control" formControlName="firstName" placeholder="Entrer votre nom" size="50"
+             [ngClass]="{'is-invalid':submitted && clientFormGroup.controls.firstName.errors}">
+      <div *ngIf="submitted && clientFormGroup.controls.firstName.errors" class="invalid-feedback">
+        <div *ngIf="submitted && clientFormGroup.controls.firstName.errors.required"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label >prenom:</label>
+      <input type="text" class="form-control" formControlName="lastName" placeholder="Entrer votre prenom"
+             [ngClass]="{'is-invalid':submitted && clientFormGroup.controls.lastName.errors}">
+      <div *ngIf="submitted && clientFormGroup.controls.lastName.errors" class="invalid-feedback">
+        <div *ngIf="submitted && clientFormGroup.controls.lastName.errors.required"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>numero de telephone:</label>
+      <input type="number" class="form-control" formControlName="phoneNumber" placeholder="Entrer numero de telephone" [ngClass]="{'is-invalid':submitted && clientFormGroup.controls.phoneNumber.errors}">
+      <div *ngIf="submitted && clientFormGroup.controls.phoneNumber.errors" class="invalid-feedback">
+        <div *ngIf="submitted && clientFormGroup.controls.phoneNumber.errors.required"></div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="onUpdateClient()">Submit</button>
+  </form>
+  </div>
+</div>

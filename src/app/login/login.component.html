@@ -1,0 +1,24 @@
+<div class="login">
+   <div>
+     <img src="assets/images/secure-access.png" class="iconuser icon" alt="">
+   </div>
+  <form [formGroup]="loginForm" class="formulaire">
+    <div class="form-group">
+      <label class="control-label">email:</label>
+      <input type="text"  name="email" class="form-control" formControlName="email" placeholder="Entrer votre email"
+             [ngClass]="{'is-invalid':submitted && loginForm.controls.email.errors}">
+      <div *ngIf="submitted && loginForm.controls.email.errors" class="invalid-feedback" >
+        <div *ngIf="submitted && loginForm.controls.email.errors.required"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label">password:</label>
+      <input type="password"  name="password" class="form-control" formControlName="password" placeholder="Entrer votre mot de passe"
+             [ngClass]="{'is-invalid':submitted && loginForm.controls.password.errors}">
+      <div *ngIf="submitted && loginForm.controls.password.errors" class="invalid-feedback" >
+        <div *ngIf="submitted && loginForm.controls.password.errors.required"></div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-outline-primary" (click)="login()">login</button>
+  </form>
+</div>

@@ -1,0 +1,62 @@
+<section class="table_header">
+  <h2>Liste des produits</h2>
+</section>
+<div *ngIf="produits" class="content">
+  <div class="search">
+   <div class="form">
+     <form #f="ngForm" (ngSubmit)="onChearch(f.value)">
+       <div class="form-group">
+         <input type="number" ngModel name="keyword" class="form-control phone" placeholder="le numrero du client">
+         <button class="btn btn-outline-info chr">
+           <span class="fa fa-search"></span>
+         </button>
+       </div>
+     </form>
+   </div>
+    <div class="addbtn">
+      <button class="btn btn-primary" routerLink="/newproduit">new</button>
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>id</th><th>client</th><th>statut</th><th>prix total</th><th>creation</th><th>modification</th><th>action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of produits">
+      <td>{{p.id}}</td>
+      <td>{{p.client.firstName}}</td>
+      <td>{{p.status}}</td>
+      <td>{{p.prixTotal}} FCFA</td>
+      <td>{{p.creationDate  | date: "dd/MM/yy"}}</td>
+      <td>{{p.lastUpdatedDate  | date: "dd/MM/yy"}}</td>
+      <th>
+        <i class="fa fa-pencil-square-o btn-primary" (click)="edit(p)" aria-hidden="true"></i>
+      </th>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!produits.length" class="liste">
+    <p>la liste est vide</p>
+  </div>
+  <!--<nav aria-label="Page navigation example">
+     <ul class="pagination justify-content-end">
+       <li class="page-item">
+         <a class="page-link" href="#">
+           <span  aria-hidden="true">&laquo; Previous</span>
+         </a>
+       </li>
+       <li class="page-item"><a class="page-link" href="#">1</a></li>
+       <li class="page-item"><a class="page-link" href="#">2</a></li>
+       <li class="page-item"><a class="page-link" href="#">3</a></li>
+       <li class="page-item">
+         <a class="page-link" href="#" aria-label="next">Next
+           <span  aria-hidden="true">&raquo;</span>
+         </a>
+       </li>
+     </ul>
+  </nav>-->
+</div>
+
