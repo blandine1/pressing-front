@@ -14,7 +14,13 @@ export class ProduitService {
   host:string = 'http://localhost:9090/gestionpressing/v1/caissiere';
 
   getAllFalseProduits():Observable<Produit[]>{
-     return this.http.get<Produit[]>(this.host + "/produit/false/allFalse");
+     return this.http.get<Produit[]>(this.host + "/produit/status/allFalse");
+  }
+  getAllTrueProduits():Observable<Produit[]>{
+    return this.http.get<Produit[]>(this.host + "/produit/paye/allTrue");
+  }
+  getAllProduitsLivres():Observable<Produit[]>{
+    return this.http.get<Produit[]>(this.host + "/produit/livre");
   }
 
   onSaveProduit(produit:Produit):Observable<Produit[]>{
@@ -28,12 +34,12 @@ export class ProduitService {
     return this.http.get<Produit>(this.host + "/produit/findProduitLigneCommande/" + id);
   }
 
-  getAllTrueProduits():Observable<Produit[]>{
-    return this.http.get<Produit[]>(this.host + "/produit/true/allTrue");
-  }
-
   getProduitByclientTrue(phone:string):Observable<Produit[]>{
     return this.http.get<Produit[]>(this.host + "/produit/alltrue/" + phone);
+  }
+
+  getProduitByclientLivreTrue(phone:string):Observable<Produit[]>{
+    return this.http.get<Produit[]>(this.host + "/produit/livre/" + phone);
   }
 
   getProduitByclientFalse(phone:string):Observable<Produit[]>{

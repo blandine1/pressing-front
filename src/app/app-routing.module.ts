@@ -18,9 +18,11 @@ import {AlltrueComponent} from "./alltrue/alltrue.component";
 import {LoginComponent} from "./login/login.component";
 import {SignupComponent} from "./signup/signup.component";
 import {EdittrueComponent} from "./edition/edittrue/edittrue.component";
+import {LivreComponent} from "./livre/livre.component";
+import {EditlivreComponent} from "./edition/editlivre/editlivre.component";
 
 const routes: Routes = [
- // {path:'', redirectTo:'login', pathMatch: 'full'},
+  {path:'', redirectTo:'produit', pathMatch: 'full'},
   {path:'login', component:LoginComponent},
   {path: '', component: HomeComponent ,children:[
       {path:'utilisateur', component:UtilisateurComponent},
@@ -31,6 +33,8 @@ const routes: Routes = [
       {path:'service/find/:id', component: EditServicesComponent},
       {path:'produit/find/:id', component: EditProduitComponent},
       {path:'produit', component: ProduitsComponent},
+      {path:'dejalivre', component: LivreComponent},
+      {path:'dejalivre/find/:id', component: EditlivreComponent},
       {path:'livre', component: AlltrueComponent},
       {path:'livre/find/:id', component: EdittrueComponent},
       {path:'categorie', component: CategorieComponent},

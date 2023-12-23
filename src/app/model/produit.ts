@@ -4,6 +4,8 @@ export class Produit{
    id:number;
    client : Client;
    status : boolean;
+   paye:boolean;
+   livre : boolean;
    description : string;
    creationDate:Date;
    lastUpdatedDate:Date;

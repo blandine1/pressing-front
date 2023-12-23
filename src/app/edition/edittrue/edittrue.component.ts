@@ -28,7 +28,6 @@ export class EdittrueComponent implements OnInit{
 
   clients:Client[]=[];
 
-
   ligneProduit:LigneProduit = new LigneProduit();
 
   submitted:boolean;
@@ -115,12 +114,12 @@ export class EdittrueComponent implements OnInit{
     this.finalListLigne=this.listLigneProduit;
     this.finalListLigne=this.editlistLigneProduit;
     this.produit.listeLigneProduit = this.finalListLigne;
-    console.log(this.produit.listeLigneProduit);
+    console.log(this.produit);
     this.produitService.onUpdateProduit(this.produit).subscribe(data=>{
       this.toaster.success( "Successfully");
       this.produit=new  Produit();
       this.listLigneProduit=[];
-      this.router.navigateByUrl("produit");
+      this.router.navigateByUrl("livre");
     }, error => {
       this.toaster.error("An error occured. Is client Selected");
       console.log(error);

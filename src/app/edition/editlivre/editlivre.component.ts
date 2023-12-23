@@ -1,21 +1,21 @@
 import {Component, OnInit} from '@angular/core';
 import {ProduitService} from "../../produit.service";
+import {ServiceService} from "../../service.service";
+import {ClientsService} from "../../clients.service";
+import {FormBuilder} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 import {LigneProduit} from "../../model/ligneProduit";
 import {Produit} from "../../model/produit";
 import {Service} from "../../model/Service";
 import {Client} from "../../model/Client";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {ServiceService} from "../../service.service";
-import {ClientsService} from "../../clients.service";
-import {ToastrService} from "ngx-toastr";
-import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-edit-produit',
-  templateUrl: './edit-produit.component.html',
-  styleUrls: ['./edit-produit.component.scss']
+  selector: 'app-editlivre',
+  templateUrl: './editlivre.component.html',
+  styleUrls: ['./editlivre.component.scss']
 })
-export class EditProduitComponent implements OnInit{
+export class EditlivreComponent implements OnInit{
 
   listLigneProduit:LigneProduit[]=[];
   editlistLigneProduit:LigneProduit[]=[];// variable decisive
@@ -49,7 +49,7 @@ export class EditProduitComponent implements OnInit{
     this.getAllClient();
     this.produitService.getProduitById(this.produitId).subscribe(data=>{
       this.listLigneProduit = data.listeLigneProduit;
-      //console.log(data);
+      console.log(data);
       this.produit.id=data.id;
       this.produit.prixTotal=data.prixTotal;
       this.produit.status = data.status;
@@ -101,7 +101,6 @@ export class EditProduitComponent implements OnInit{
     });
   }
   onChangeProduit($event: any) {
-    //cette fonction est pour chager le statut de la ligne produit
     const id = $event.target.value;
     const isCheck = $event.target.checked;
     this.editlistLigneProduit = this.listLigneProduit.map((p)=>{
@@ -117,14 +116,14 @@ export class EditProduitComponent implements OnInit{
     this.finalListLigne=this.listLigneProduit;
     this.finalListLigne=this.editlistLigneProduit;
     this.produit.listeLigneProduit = this.finalListLigne;
-    console.log(this.produit.listeLigneProduit);
+    console.log(this.produit);
     this.produitService.onUpdateProduit(this.produit).subscribe(data=>{
       this.toaster.success( "Successfully");
       this.produit=new  Produit();
       this.listLigneProduit=[];
       this.router.navigateByUrl("produit");
     }, error => {
-      this.toaster.error("An error occured. client is not Selected");
+      this.toaster.error("An error occured. Is client Selected");
       console.log(error);
     })
   }
@@ -134,7 +133,8 @@ export class EditProduitComponent implements OnInit{
   }
 
   update() {
-     this.prixTotal();
-     this.ligneProduit= new LigneProduit();
+    this.prixTotal();
+    this.ligneProduit= new LigneProduit();
   }
+
 }

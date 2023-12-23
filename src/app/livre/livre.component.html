@@ -1,5 +1,5 @@
 <section class="table_header">
-  <h2>Liste des produits payés mais encore disponible au pressing</h2>
+  <h2>Liste des produits livrés</h2>
 </section>
 <div *ngIf="produits" class="content">
   <div class="search">
@@ -14,22 +14,23 @@
       </form>
     </div>
     <div class="addbtn">
-      <p class="inutile"></p>
+      <p class="inutile" ></p>
     </div>
   </div>
 
   <table class="table table-striped">
     <thead class="thead-dark">
     <tr>
-      <th>id</th><th>client</th><th>livré</th><th>date de creation</th><th>prix total</th><th>action</th>
+      <th>id</th><th>client</th><th>livré</th><th>date de creation</th><th>modification</th><th>prix total</th><th>action</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let p of produits">
       <td>{{p.id}}</td>
       <td>{{p.client.firstName}}</td>
-      <td>{{p.paye}}</td>
+      <td>{{p.livre}}</td>
       <td>{{p.creationDate  | date: "dd/MM/yy"}}</td>
+      <td>{{p.lastUpdatedDate  | date: "dd/MM/yy"}}</td>
       <td>{{p.prixTotal}} FCFA</td>
       <th>
         <i class="fa fa-pencil-square-o btn-primary" (click)="edit(p)" aria-hidden="true"></i>
@@ -42,3 +43,4 @@
     <p>la liste est vide</p>
   </div>
 </div>
+

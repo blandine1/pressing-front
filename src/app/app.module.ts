@@ -27,6 +27,8 @@ import { AlltrueComponent } from './alltrue/alltrue.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { EdittrueComponent } from './edition/edittrue/edittrue.component';
+import { LivreComponent } from './livre/livre.component';
+import { EditlivreComponent } from './edition/editlivre/editlivre.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { EdittrueComponent } from './edition/edittrue/edittrue.component';
     LoginComponent,
     SignupComponent,
     EdittrueComponent,
+    LivreComponent,
+    EditlivreComponent,
   ],
     imports: [
         BrowserModule,
